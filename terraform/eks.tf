@@ -31,7 +31,7 @@ module "eks" {
   access_entries = {
     # One access entry with a policy associated
     example = {
-      principal_arn = "arn:aws:iam::350646758478:user/terraform"
+      principal_arn = "arn:aws:iam::350646758478:root"
 
       policy_associations = {
         example = {
@@ -77,7 +77,7 @@ module "eks" {
 
   eks_managed_node_group_defaults = {
 
-    instance_types = ["t3.large"]
+    instance_types = ["t3.micro"]
 
     attach_cluster_primary_security_group = true
 
@@ -92,8 +92,8 @@ module "eks" {
       max_size     = 3
       desired_size = 1
 
-      instance_types = ["t3.large"]
-      capacity_type  = "SPOT"
+      instance_types = ["t3.micro"]
+      capacity_type  = "ON_DEMAND""
 
       disk_size                  = 35
       use_custom_launch_template = false # Important to apply disk size!
